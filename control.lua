@@ -67,13 +67,25 @@ script.on_event(defines.events.on_gui_click, function(event)
 end)
 
 script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
-	local player = game.players[event.player_index]
+	if not global.permissions then
+		global.permissions = {}
+		global.permissions[0] = true
+		for i, p in pairs(game.players) do
+			global.permissions[p.index] = true
+		end
+	end
+	local index = event.player_index
+	local player = game.players[index]
 	if player.character then
 		if isHolding({name="ping-tool", count=1}, player) then
-			player.character_build_distance_bonus = 500
 			if player.admin then
-				open_GUI(player.index)
+				open_GUI(index)
 			end
+			if not global.permissions[index] then
+				player.print({"permission-denied"})
+				return player.cursor_stack.clear()
+			end
+			player.character_build_distance_bonus = 500
 		else
 			player.character_build_distance_bonus = 0
 		end
@@ -87,13 +99,29 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 end)
 
 function process_tick()
-	local current_tick = game.tick
 	if global.markers then
+		local current_tick = game.tick
 		for i = #global.markers, 1, -1 do -- Loop over table backwards because some entries get removed within the loop
 			local marker = global.markers[i][1]
+			local sub_tick = (current_tick - global.markers[i][2]) % 60
 			if not (marker and marker.valid) then
 				table.remove(global.markers, i)
-			elseif global.markers[i][2] == current_tick then
+			end
+			if sub_tick == 0 then
+				local arrow_position = marker.position
+				arrow_position.y = arrow_position.y - 7
+				local arrow = marker.surface.create_entity({name = "ping-arrow", position = arrow_position, force = marker.force, direction = defines.direction.south})
+				arrow.insert({name="coal", count=1})
+				global.markers[i][3] = arrow
+			elseif sub_tick == 30 then
+				if global.markers[i][3] and global.markers[i][3].valid then
+					global.markers[i][3].destroy()
+				end
+			end
+			if global.markers[i][2] == current_tick then
+				if global.markers[i][3] and global.markers[i][3].valid then
+					global.markers[i][3].destroy()
+				end
 				marker.destroy()
 				table.remove(global.markers, i)
 			end
@@ -143,7 +171,7 @@ function pingLocation(position, player)
 		return
 	end
 	local current_tick = game.tick
-	if global.tick and global.tick > current_tick then
+	if global.tick and (global.tick > current_tick) then
 		return
 	end
 	global.tick = current_tick + lockoutTicks
@@ -152,22 +180,24 @@ function pingLocation(position, player)
 	marker.backer_name = player.name .. "'s ping location"
 	global.markers = global.markers or {}
 	table.insert(global.markers, {marker, current_tick + pingDuration})
-	player.force.print({"pinged-location", player.name})
-	playSoundForForce("ping-sound", player.force)
+	-- player.force.print({"pinged-location", player.name})
+	playSoundForForce("ping-sound-" .. math.random(3), player.force)
 	script.on_event(defines.events.on_tick, process_tick)
 end
 
 script.on_event(defines.events.on_built_entity, function(event)
-	local player = game.players[event.player_index]
+	local index = event.player_index
+	local player = game.players[index]
 	local entity = event.created_entity
-	if entity.name == "entity-ghost" then
+	local entity_name = entity.name
+	if entity_name == "entity-ghost" then
 		if entity.ghost_name == "ping-tool" then
-			if not global.permissions[player.index] then
+			if not global.permissions[index] then
 				player.print({"permission-denied"})
 				return entity.destroy()
 			end
 			if not global.selector then
-				global.selector = event.player_index
+				global.selector = index
 				script.on_event(defines.events.on_tick, process_tick)
 				player.print({"entered-selection-mode"})
 			else
@@ -176,7 +206,7 @@ script.on_event(defines.events.on_built_entity, function(event)
 			return entity.destroy()
 		end
 	end
-	if entity.name == "ping-tool" then
+	if entity_name == "ping-tool" then
 		player.insert({name="ping-tool", count=1})
 		pingLocation(entity.position, player)
 		return entity.destroy()
