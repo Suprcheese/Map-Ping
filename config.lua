@@ -4,6 +4,6 @@
 lockoutTicks = 120
 
 
--- This is how long a ping persists on the minimap, in units of game ticks. There are 60 ticks per second, so the default 540 ticks would be 9 seconds.
+-- This is how long a ping persists on the minimap, in units of game ticks. There are 60 ticks per second, so the default 480 ticks would be 8 seconds.
 
-pingDuration = 540
+pingDuration = 480

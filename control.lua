@@ -33,7 +33,7 @@ function open_GUI(player_index)
 	frame["ping-admin-panel-table"].add{type = "checkbox", state = global.permissions[0], name = "0"}
 	for i, player in pairs(game.players) do
 		frame["ping-admin-panel-table"].add{type = "label", caption = player.name}
-		frame["ping-admin-panel-table"].add{type = "checkbox", state = global.permissions[player_index], name = player_index .. ""}
+		frame["ping-admin-panel-table"].add{type = "checkbox", state = global.permissions[player.index], name = player.index .. ""}
 	end
 	frame["ping-admin-panel-table"].add{type = "button", caption = {"close"}, name = "close-ping-admin-panel"}
 end

@@ -1,34 +1,40 @@
 Map Ping 1.0.0
 ==============
 
-Version 1.0.0 was released August 28, 2016, was tested using Factorio v0.14.1, and was authored by Supercheese, with contributions from madmaxoft, bNarFProfCrazy, and Danielv123.
+Version 1.0.0 was released October 20, 2016, was tested using Factorio v0.14.14, and was authored by Supercheese.
 
-Do you have a large, late-game megabase and wish there were more cool things you could build? Do you wish you could do more with the rockets you launch than just increment a single number? Do you really hate biters? If so, then this mod is for you!
-Build a giant ion cannon and launch it into orbit with a rocket, wait for it to charge up, and then you're ready to call down the thunder on those pesky aliens.
-Simply click anywhere with your targeting device and watch the total annihilation ensue.
-(If you've played the Command & Conquer series of games, you're bound to recognize many features similar to the GDI's Ion Cannons.)
+This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game.
+This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
+A distinctive sound will play and a swirling graphic will be visible on the field and a train-stop-esque marker, complete with blinking pointer, will be visible on the minimap.
 
-You can click on the button added at the top of your screen to check on the status of your ion cannons in orbit.
+You can also Shift+Click with the ping tool to enter Selection Display Mode. This will draw an arrow pointing towards any entity you hover your cursor over, and this arrow will be visible to all players on your team.
+You exit Selection Display Mode simple by changing your held item (e.g. pressing Q by default). Only one player can be in Selection Display Mode at a time.
 
-If you like, you can even automate the destruction of enemy nests by researching and building Auto-Targeting Stations, which will periodically scan for enemy nests and automatically fire an ion cannon if it detects one.
+In order to prevent abuse in an MP environment, whenever an admin selects the Map Ping Tool, an admin GUI will open that allows them to toggle permissions for all players in the game.
+If players are abusing the ping tool, they can be easily banned from using it. The default permission for new players that join follows the state of the "Toggle All" checkbox; if the box is unchecked, new players will be banned by default.
 
-This mod is aware of Bob's mods and will update its recipes and technology requirements if Bob's Electronics, Tech, Warfare, and/or Power mods are installed.
+This mod has configuration options available in config.lua. Here you may adjust parameters such as:
 
-This mod also has configuration options available in config.lua. Here you may adjust parameters such as:
-
--The cooldown time for the ion cannons, their damage amounts and blast radii
--Select which announcer voice you want (Original C&C, Tiberian Sun EVA, or Tiberian Sun CABAL)
-
+-The global lockout time between consecutive map pings
+-How long a map ping lasts
 
 
 Credits:
 --------
 
-The klaxon sound was obtained from: https://freesound.org/people/jobro/sounds/244113/
-It was uploaded by the user "jobro" under the CC-0 (Creative Commons 0) license. (See: http://creativecommons.org/publicdomain/zero/1.0/)
+The ping sounds were obtained from:
 
-The ion beam that the ion cannon fires was obtained from: http://opengameart.org/content/top-down-sci-fi-shooter-pack
-It was uploaded by the user Tatermand under the CC-BY-SA license.
+http://opengameart.org/content/sound-effects-sfx025
+	It was uploaded by the user jalastram, under the OGA-BY License (http://static.opengameart.org/OGA-BY-3.0.txt)
+http://opengameart.org/content/sci-fi-sound-effects-library
+	It was uploaded by the user Little Robot Sound Factory, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+https://www.freesound.org/people/qubodup/sounds/238995
+	It was uploaded by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+
+The Map Ping Tool icon was obtained from: http://opengameart.org/content/cursors-arrows-map-markers-for-ardentryst-by-jordan-trudgett
+	It was authored by Jordan Trudgett and submitted by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+
+
 
 Thanks to the forum, Github, and #factorio IRC denizens for inspiration, advice, & bugtesting.
 
