@@ -1,7 +1,7 @@
-Map Ping 1.0.0
+Map Ping 0.1.0
 ==============
 
-Version 1.0.0 was released October 20, 2016, was tested using Factorio v0.14.14, and was authored by Supercheese.
+Version 0.1.0 was released October 21, 2016, was tested using Factorio v0.14.14, and was authored by Supercheese.
 
 This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game.
 This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
@@ -26,18 +26,22 @@ The ping sounds were obtained from:
 
 http://opengameart.org/content/sound-effects-sfx025
 	It was uploaded by the user jalastram, under the OGA-BY License (http://static.opengameart.org/OGA-BY-3.0.txt)
+
 http://opengameart.org/content/sci-fi-sound-effects-library
-	It was uploaded by the user Little Robot Sound Factory, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+	It was uploaded by the user Little Robot Sound Factory, under the CC-BY License (https://creativecommons.org/licenses/by/3.0)
+
 https://www.freesound.org/people/qubodup/sounds/238995
-	It was uploaded by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+	It was uploaded by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0)
 
 The Map Ping Tool icon was obtained from: http://opengameart.org/content/cursors-arrows-map-markers-for-ardentryst-by-jordan-trudgett
-	It was authored by Jordan Trudgett and submitted by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0/)
+	It was authored by Jordan Trudgett and submitted by the user qubodup, under the CC-BY License (https://creativecommons.org/licenses/by/3.0)
 
+The spinning ping graphics were obtained from: http://opengameart.org/content/%E2%80%9Calien%E2%80%9D-crosshairs
+	They were authored by Pyccna and submitted by the user Calinou, under the CC-BY License (https://creativecommons.org/licenses/by/3.0)
 
 
 Thanks to the forum, Github, and #factorio IRC denizens for inspiration, advice, & bugtesting.
 
 See also the associated forum thread to give feedback, view screenshots, etc.:
 
-http://www.factorioforums.com/forum/viewtopic.php?f=93&t=17910
+https://forums.factorio.com/viewtopic.php?f=97&t=34902
