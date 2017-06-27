@@ -83,7 +83,7 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 				player.print({"permission-denied"})
 				return player.cursor_stack.clear()
 			end
-			player.character_build_distance_bonus = 500
+			player.character_build_distance_bonus = 5000
 		else
 			player.character_build_distance_bonus = 0
 		end
@@ -102,25 +102,29 @@ function process_tick()
 		for i = #global.markers, 1, -1 do -- Loop over table backwards because some entries get removed within the loop
 			local marker = global.markers[i][1]
 			local sub_tick = (current_tick - global.markers[i][2]) % 60
-			if not (marker and marker.valid) then
-				table.remove(global.markers, i)
-			end
-			if sub_tick == 0 then
-				local arrow_position = marker.position
-				arrow_position.y = arrow_position.y - 7
-				local arrow = marker.surface.create_entity({name = "ping-arrow", position = arrow_position, force = marker.force, direction = defines.direction.south})
-				arrow.insert({name="coal", count=1})
-				global.markers[i][3] = arrow
-			elseif sub_tick == 30 then
+			if marker and marker.valid then
+				if sub_tick == 0 then
+					local arrow_position = marker.position
+					arrow_position.y = arrow_position.y - 7
+					local arrow = marker.surface.create_entity({name = "ping-arrow", position = arrow_position, force = marker.force, direction = defines.direction.south})
+					arrow.insert({name="coal", count=1})
+					global.markers[i][3] = arrow
+				elseif sub_tick == 30 then
+					if global.markers[i][3] and global.markers[i][3].valid then
+						global.markers[i][3].destroy()
+					end
+				end
+				if global.markers[i][2] == current_tick then
+					if global.markers[i][3] and global.markers[i][3].valid then
+						global.markers[i][3].destroy()
+					end
+					marker.destroy()
+					table.remove(global.markers, i)
+				end
+			else
 				if global.markers[i][3] and global.markers[i][3].valid then
 					global.markers[i][3].destroy()
 				end
-			end
-			if global.markers[i][2] == current_tick then
-				if global.markers[i][3] and global.markers[i][3].valid then
-					global.markers[i][3].destroy()
-				end
-				marker.destroy()
 				table.remove(global.markers, i)
 			end
 		end
@@ -174,8 +178,7 @@ function pingLocation(position, player)
 	end
 	global.tick = current_tick + settings.global["map-ping-lockout-ticks"].value
 	local ping = player.surface.create_entity({name = "map-ping-explosion", position = position})
-	local marker = player.surface.create_entity({name = "map-ping-marker", position = position, force = player.force})
-	marker.backer_name = player.name .. "'s ping location"
+	local marker = player.force.add_chart_tag(player.surface, {position = position, text = player.name .. "'s ping location", last_user = player})
 	global.markers = global.markers or {}
 	table.insert(global.markers, {marker, current_tick + settings.startup["map-ping-duration-ticks"].value})
 	-- player.force.print({"pinged-location", player.name})
