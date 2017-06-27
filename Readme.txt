@@ -1,11 +1,11 @@
-Map Ping 0.1.0
+Map Ping 0.2.0
 ==============
 
-Version 0.1.0 was released October 21, 2016, was tested using Factorio v0.14.14, and was authored by Supercheese.
+Version 0.2.0 was released June 27, 2017, was tested using Factorio v0.15.22, and was authored by Supercheese.
 
 This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game.
 This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
-A distinctive sound will play and a swirling graphic will be visible on the field and a train-stop-esque marker, complete with blinking pointer, will be visible on the minimap.
+A distinctive sound will play and a swirling graphic will be visible on the field and a custom marker, complete with blinking pointer, will be visible on the minimap.
 
 You can also Shift+Click with the ping tool to enter Selection Display Mode. This will draw an arrow pointing towards any entity you hover your cursor over, and this arrow will be visible to all players on your team.
 You exit Selection Display Mode simple by changing your held item (e.g. pressing Q by default). Only one player can be in Selection Display Mode at a time.
@@ -13,7 +13,7 @@ You exit Selection Display Mode simple by changing your held item (e.g. pressing
 In order to prevent abuse in an MP environment, whenever an admin selects the Map Ping Tool, an admin GUI will open that allows them to toggle permissions for all players in the game.
 If players are abusing the ping tool, they can be easily banned from using it. The default permission for new players that join follows the state of the "Toggle All" checkbox; if the box is unchecked, new players will be banned by default.
 
-This mod has configuration options available in config.lua. Here you may adjust parameters such as:
+This mod has configuration options available through the in-game mod options menu (Options -> Mods). Here you may adjust parameters such as:
 
 -The global lockout time between consecutive map pings
 -How long a map ping lasts
