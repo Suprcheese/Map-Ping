@@ -1,5 +1,3 @@
-require "config"
-
 script.on_load(function() On_Load() end)
 
 function On_Load()
@@ -174,12 +172,12 @@ function pingLocation(position, player)
 	if global.tick and (global.tick > current_tick) then
 		return
 	end
-	global.tick = current_tick + lockoutTicks
+	global.tick = current_tick + settings.global["map-ping-lockout-ticks"].value
 	local ping = player.surface.create_entity({name = "map-ping-explosion", position = position})
 	local marker = player.surface.create_entity({name = "map-ping-marker", position = position, force = player.force})
 	marker.backer_name = player.name .. "'s ping location"
 	global.markers = global.markers or {}
-	table.insert(global.markers, {marker, current_tick + pingDuration})
+	table.insert(global.markers, {marker, current_tick + settings.startup["map-ping-duration-ticks"].value})
 	-- player.force.print({"pinged-location", player.name})
 	playSoundForForce("ping-sound-" .. math.random(3), player.force)
 	script.on_event(defines.events.on_tick, process_tick)
@@ -207,7 +205,7 @@ script.on_event(defines.events.on_built_entity, function(event)
 		end
 	end
 	if entity_name == "ping-tool" then
-		player.insert({name="ping-tool", count=1})
+		player.cursor_stack.set_stack({name="ping-tool", count=1})
 		pingLocation(entity.position, player)
 		return entity.destroy()
 	end

@@ -37,7 +37,7 @@ data:extend({
 		order = "y",
 		selectable_in_game = false,
 		minable = {mining_time = 1, result = "train-stop"},
-		max_health = 0,
+		max_health = 1,
 		render_layer = "air-object",
 		final_render_layer = "air-object",
 		collision_box = {{0,0}, {0,0}},
@@ -74,7 +74,7 @@ data:extend({
 		icon = "__base__/graphics/icons/car.png",
 		flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
 		minable = {mining_time = 1, result = "car"},
-		max_health = 0,
+		max_health = 1,
 		order = "y",
 		corpse = "medium-remnants",
 		dying_explosion = "medium-explosion",
@@ -182,8 +182,8 @@ data:extend({
 		slow_down_factor = 0,
 		affected_by_wind = false,
 		cyclic = true,
-		duration = pingDuration,
-		fade_away_duration = pingDuration / 4,
+		duration = settings.startup["map-ping-duration-ticks"].value,
+		fade_away_duration = settings.startup["map-ping-duration-ticks"].value / 4,
 		spread_duration = 10,
 	}
 })
