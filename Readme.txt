@@ -1,11 +1,12 @@
-Map Ping 0.2.0
+Map Ping 1.0.0
 ==============
 
-Version 0.2.0 was released June 27, 2017, was tested using Factorio v0.15.22, and was authored by Supercheese.
+Version 1.0.0 was released January 17, 2018, was tested using Factorio v0.16.16, and was authored by Supercheese.
 
 This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game.
 This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
 A distinctive sound will play and a swirling graphic will be visible on the field and a custom marker, complete with blinking pointer, will be visible on the minimap.
+A custom alert will also be shown next to your toolbelt, similar to the alerts for destroyed structures.
 
 You can also Shift+Click with the ping tool to enter Selection Display Mode. This will draw an arrow pointing towards any entity you hover your cursor over, and this arrow will be visible to all players on your team.
 You exit Selection Display Mode simple by changing your held item (e.g. pressing Q by default). Only one player can be in Selection Display Mode at a time.

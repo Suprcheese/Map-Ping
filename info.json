@@ -1,10 +1,10 @@
 {
   "name": "Map Ping",
-  "version": "0.2.0",
-  "factorio_version": "0.15",
+  "version": "1.0.0",
+  "factorio_version": "0.16",
   "title": "Map Ping",
   "author": "Supercheese",
   "homepage": "https://forums.factorio.com/viewtopic.php?f=97&t=34902",
-  "dependencies": ["base >= 0.15.0"],
+  "dependencies": ["base >= 0.16.0"],
   "description": "A set of multiplayer tools useful for pointing out locations on the map to other players."
 }

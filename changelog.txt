@@ -1,10 +1,19 @@
-Version 0.1.0 - October 21, 2016
---------------------------------
-Initial release, featuring a Ping Tool that can highlight areas or entities on the map for your teammates.
-
-
-Version 0.2.0 - June 27, 2017
------------------------------
-Updated for Factorio 0.15.
-Moved options from config.lua to the in-game mod settings.
-Switched from using a train stop to show the ping location on the map to 0.15's new custom map marker feature.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 17. 1. 2018
+  Changes:
+    - Updated for Factorio 0.16.
+  Minor Features:
+    - Map pings will now show a custom alert, like the alerts for destroyed structures et al.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 27. 6. 2017
+  Changes:
+    - Updated for Factorio 0.15.
+    - Moved options from config.lua to the in-game mod settings.
+    - Switched from using a train stop to show the ping location on the map to 0.15's new custom map marker feature.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0 - First public release
+Date: 21. 10. 2016
+  Major Features:
+    - Initial release, featuring a Ping Tool that can highlight areas or entities on the map for your teammates.
