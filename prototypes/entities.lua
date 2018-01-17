@@ -14,6 +14,7 @@ data:extend({
 		type = "container",
 		name = "ping-tool",
 		icon = "__Map Ping__/graphics/PingTool.png",
+		icon_size = 32,
 		flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
 		max_health = 1,
 		corpse = "small-remnants",
@@ -71,7 +72,8 @@ data:extend({
 	{
 		type = "car",
 		name = "ping-arrow",
-		icon = "__base__/graphics/icons/car.png",
+		icon = "__Map Ping__/graphics/PingTool.png",
+		icon_size = 32,
 		flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
 		minable = {mining_time = 1, result = "car"},
 		max_health = 1,

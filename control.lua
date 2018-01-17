@@ -24,7 +24,7 @@ function open_GUI(player_index)
 	end
 	frame = player.gui.left.add{type = "frame", name = "ping-admin-panel", direction = "vertical"}
 	frame.add{type = "label", caption = {"ping-admin-panel-header"}}
-	frame.add{type = "table", colspan = 2, name = "ping-admin-panel-table"}
+	frame.add{type = "table", column_count = 2, name = "ping-admin-panel-table"}
 	frame["ping-admin-panel-table"].add{type = "label", caption = {"player-names"}}
 	frame["ping-admin-panel-table"].add{type = "label", caption = {"allowed-to-ping"}}
 	frame["ping-admin-panel-table"].add{type = "label", caption = {"toggle-all"}}
@@ -181,6 +181,11 @@ function pingLocation(position, player)
 	local marker = player.force.add_chart_tag(player.surface, {position = position, text = player.name .. "'s ping location", last_user = player})
 	global.markers = global.markers or {}
 	table.insert(global.markers, {marker, current_tick + settings.startup["map-ping-duration-ticks"].value})
+	for i, p in pairs(player.force.connected_players) do
+		-- if settings.get_player_settings(p)["map-ping-custom-alerts"].value then
+			p.add_custom_alert(ping, {type = "item", name = "ping-tool"}, {"ping-location", player.name, ping.position.x, ping.position.y}, true)
+		-- end
+	end
 	-- player.force.print({"pinged-location", player.name})
 	playSoundForForce("ping-sound-" .. math.random(3), player.force)
 	script.on_event(defines.events.on_tick, process_tick)
