@@ -151,14 +151,6 @@ function process_tick()
 	end
 end
 
-function playSoundForForce(sound, force)
-	for i, player in pairs(force.players) do
-		if player.connected then
-			player.surface.create_entity({name = sound, position = player.position})
-		end
-	end
-end
-
 function isHolding(stack, player)
 	local holding = player.cursor_stack
 	if holding and holding.valid_for_read and (holding.name == stack.name) and (holding.count >= stack.count) then
@@ -187,7 +179,7 @@ function pingLocation(position, player)
 		-- end
 	end
 	-- player.force.print({"pinged-location", player.name})
-	playSoundForForce("ping-sound-" .. math.random(3), player.force)
+	player.force.play_sound({path = "ping-sound"})
 	script.on_event(defines.events.on_tick, process_tick)
 end
 
