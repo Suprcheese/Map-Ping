@@ -46,8 +46,8 @@ end
 
 script.on_event(defines.events.on_gui_checked_state_changed, function(event)
 	local checkbox = event.element
-	local index = tonumber(checkbox.name)
 	if checkbox.parent.name == "ping-admin-panel-table" then
+		local index = tonumber(checkbox.name)
 		global.permissions[index] = checkbox.state
 		if index == 0 then
 			for i = 1, #game.players do
