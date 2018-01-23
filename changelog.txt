@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 23. 1. 2018
+  Changes:
+    - Switch to new play_sound() function rather than spawning "explosion"-type entities to play sounds.
+    - Behind-the-scenes performance optimizations.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 17. 1. 2018
   Changes:
