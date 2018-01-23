@@ -1,7 +1,7 @@
 script.on_load(function() On_Load() end)
 
 function On_Load()
-	if global.selector or global.markers then
+	if global.markers then
 		script.on_event(defines.events.on_tick, process_tick)
 	end
 end
@@ -91,6 +91,9 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 	if global.selector then
 		local master = game.players[global.selector]
 		if not isHolding({name="ping-tool", count=1}, master) then
+			for i, p in pairs(master.force.connected_players) do
+				p.clear_gui_arrow()
+			end
 			global.selector = nil
 		end
 	end
@@ -129,27 +132,28 @@ function process_tick()
 			end
 		end
 	end
-	if global.selector then
-		local master = game.players[global.selector]
-		local selected_entity = master.selected
-		if selected_entity then
-			for i, player in pairs(master.force.players) do
-				player.clear_gui_arrow()
-				player.set_gui_arrow({type = "entity", entity = selected_entity})
-			end
-		end
-	else
-		for i, player in pairs(game.players) do
-			player.clear_gui_arrow()
-		end
-	end
 	if global.markers and #global.markers == 0 then
 		global.markers = nil
 	end
-	if not (global.markers or global.selector) then
+	if not global.markers then
 		script.on_event(defines.events.on_tick, nil)
 	end
 end
+
+script.on_event(defines.events.on_selected_entity_changed, function(event)
+	if global.selector then
+		if event.player_index == global.selector then
+			local master = game.players[global.selector]
+			local selected_entity = master.selected
+			if selected_entity and selected_entity.valid then
+				for i, player in pairs(master.force.connected_players) do
+					player.clear_gui_arrow()
+					player.set_gui_arrow({type = "entity", entity = selected_entity})
+				end
+			end
+		end
+	end
+end)
 
 function isHolding(stack, player)
 	local holding = player.cursor_stack
@@ -184,19 +188,18 @@ function pingLocation(position, player)
 end
 
 script.on_event(defines.events.on_built_entity, function(event)
-	local index = event.player_index
-	local player = game.players[index]
 	local entity = event.created_entity
 	local entity_name = entity.name
 	if entity_name == "entity-ghost" then
 		if entity.ghost_name == "ping-tool" then
+			local index = event.player_index
+			local player = game.players[index]
 			if not global.permissions[index] then
 				player.print({"permission-denied"})
 				return entity.destroy()
 			end
 			if not global.selector then
 				global.selector = index
-				script.on_event(defines.events.on_tick, process_tick)
 				player.print({"entered-selection-mode"})
 			else
 				player.print({"error-already-selection", game.players[global.selector].name})
@@ -205,6 +208,7 @@ script.on_event(defines.events.on_built_entity, function(event)
 		end
 	end
 	if entity_name == "ping-tool" then
+		local player = game.players[event.player_index]
 		player.cursor_stack.set_stack({name="ping-tool", count=1})
 		pingLocation(entity.position, player)
 		return entity.destroy()
