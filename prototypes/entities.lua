@@ -15,7 +15,7 @@ data:extend({
 		name = "ping-tool",
 		icon = "__Map Ping__/graphics/PingTool.png",
 		icon_size = 32,
-		flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+		flags = {"not-on-map", "placeable-off-grid"},
 		max_health = 1,
 		corpse = "small-remnants",
 		inventory_size = 0,
@@ -30,51 +30,12 @@ data:extend({
 		}
 	},
 
-	-- {
-		-- type = "train-stop",
-		-- name = "map-ping-marker",
-		-- icon = "__Map Ping__/graphics/PingTool.png",
-		-- flags = {"placeable-off-grid", "placeable-neutral", "player-creation", "filter-directions"},
-		-- order = "y",
-		-- selectable_in_game = false,
-		-- minable = {mining_time = 1, result = "train-stop"},
-		-- max_health = 1,
-		-- render_layer = "air-object",
-		-- final_render_layer = "air-object",
-		-- collision_box = {{0,0}, {0,0}},
-		-- selection_box = {{0,0}, {0,0}},
-		-- drawing_box = {{0,0}, {0,0}},
-		-- tile_width = 1,
-		-- tile_height = 1,
-		-- animation_ticks_per_frame = 60,
-		-- animations =
-		-- {
-			-- north = null,
-			-- east = null,
-			-- south = null,
-			-- west = null,
-		-- },
-		-- vehicle_impact_sound =	{ filename = "__base__/sound/car-metal-impact.ogg", volume = 0 },
-		-- working_sound =
-		-- {
-			-- sound = { filename = "__base__/sound/train-stop.ogg", volume = 0 }
-		-- },
-		-- circuit_wire_connection_points = {},
-		-- circuit_connector_sprites =
-		-- {
-			-- get_circuit_connector_sprites({0.5625-1, 1.03125}, {0.5625-1, 1.03125}, 0), --N
-			-- get_circuit_connector_sprites({-0.78125, 0.28125-1}, {-0.78125, 0.28125-1}, 6), --E
-			-- get_circuit_connector_sprites({-0.28125+1, 0.28125}, {-0.28125+1, 0.28125}, 0), --S
-			-- get_circuit_connector_sprites({0.03125, 0.28125+1}, {0.03125, 0.28125+1}, 6), --W
-		-- },
-	-- },
-
 	{
 		type = "car",
 		name = "ping-arrow",
 		icon = "__Map Ping__/graphics/PingTool.png",
 		icon_size = 32,
-		flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
+		flags = {"not-on-map", "placeable-off-grid"},
 		minable = {mining_time = 1, result = "car"},
 		max_health = 1,
 		order = "y",
