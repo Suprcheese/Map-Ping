@@ -1,8 +1,8 @@
 local null =	{
-		filename = "__Map Ping__/graphics/null.png",
+		filename = "__core__/graphics/empty.png",
 		priority = "low",
-		width = 32,
-		height = 32,
+		width = 1,
+		height = 1,
 		scale = 1,
 		shift = {0, 0},
 		frame_count = 1,
