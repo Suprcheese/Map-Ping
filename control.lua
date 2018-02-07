@@ -33,7 +33,7 @@ function open_GUI(player_index)
 		frame["ping-admin-panel-table"].add{type = "label", caption = player.name}
 		frame["ping-admin-panel-table"].add{type = "checkbox", state = global.permissions[player.index], name = player.index .. ""}
 	end
-	frame["ping-admin-panel-table"].add{type = "button", caption = {"close"}, name = "close-ping-admin-panel"}
+	frame["ping-admin-panel-table"].add{type = "button", caption = {"gui.close"}, name = "close-ping-admin-panel"}
 end
 
 function close_GUI(player_index)
@@ -82,9 +82,25 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 			player.print({"permission-denied"})
 			return player.cursor_stack.clear()
 		end
-		if player.character then player.character_build_distance_bonus = 5000 end
+		if player.character then
+			if (player.character_build_distance_bonus > 0) and not (player.character_build_distance_bonus == 5000) then
+				global.bonus = global.bonus or {}
+				global.bonus[index] = player.character_build_distance_bonus
+			end
+			player.character_build_distance_bonus = 5000
+		end
 	else
-		if player.character then player.character_build_distance_bonus = 0 end
+		if player.character then
+			if (player.character_build_distance_bonus > 0) and not (player.character_build_distance_bonus == 5000) then
+				global.bonus = global.bonus or {}
+				global.bonus[index] = player.character_build_distance_bonus
+			end
+			if global.bonus and global.bonus[index] then
+				player.character_build_distance_bonus = global.bonus[index]
+			else
+				player.character_build_distance_bonus = 0
+			end
+		end
 	end
 	if global.selector then
 		local master = game.players[global.selector]
@@ -231,6 +247,6 @@ script.on_event("map-ping-hotkey", function(event)
 	if proceed then
 		player.cursor_stack.set_stack({name="ping-tool", count=1})
 	else
-		player.print({"add-full-condition"})
+		player.print({"inventory-restriction.player-inventory-full", player.cursor_stack.name})
 	end
 end)
