@@ -1,9 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.2
-Date: 7. 2. 2018
-  Changes:
+Date: 8. 2. 2018
+  Major Features:
     - Added a hotkey to quickly access the Map Ping Tool (Shift+P by default).
     - Added a per-player setting to keep your inventory/quickbar clean of ping tools, allowing you to rely entirely on the hotkey to ping the map rather than consuming an quickbar/inventory slot with the ping tool.
+  Bugfixes:
+    - Fixed compatibility with certain niche reach-distance mods.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
 Date: 23. 1. 2018

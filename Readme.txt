@@ -1,7 +1,7 @@
 Map Ping 1.0.2
 ==============
 
-Version 1.0.2 was released February 7, 2018, was tested using Factorio v0.16.22, and was authored by Supercheese.
+Version 1.0.2 was released February 8, 2018, was tested using Factorio v0.16.22, and was authored by Supercheese.
 
 This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game, and also available via hotkey.
 This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
