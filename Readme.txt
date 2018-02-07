@@ -1,9 +1,9 @@
-Map Ping 1.0.1
+Map Ping 1.0.2
 ==============
 
-Version 1.0.1 was released January 24, 2018, was tested using Factorio v0.16.18, and was authored by Supercheese.
+Version 1.0.2 was released February 7, 2018, was tested using Factorio v0.16.22, and was authored by Supercheese.
 
-This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game.
+This mod adds a Map Ping Tool that is free to craft and available immediately at the beginning of a game, and also available via hotkey.
 This tool allows you to highlight a location on the map that will be visible to other players. Clicking with the tool will "ping" the selected location to players of your force.
 A distinctive sound will play and a swirling graphic will be visible on the field and a custom marker, complete with blinking pointer, will be visible on the minimap.
 A custom alert will also be shown next to your toolbelt, similar to the alerts for destroyed structures.
@@ -18,6 +18,7 @@ This mod has configuration options available through the in-game mod options men
 
 -The global lockout time between consecutive map pings
 -How long a map ping lasts
+-Enable "hotkey-only" mode, keeping your inventory free of ping tools, instead relying on the keybind to ping the map.
 
 
 Credits:

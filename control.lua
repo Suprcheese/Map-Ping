@@ -74,19 +74,17 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 	end
 	local index = event.player_index
 	local player = game.players[index]
-	if player.character then
-		if isHolding({name="ping-tool", count=1}, player) then
-			if player.admin then
-				open_GUI(index)
-			end
-			if not global.permissions[index] then
-				player.print({"permission-denied"})
-				return player.cursor_stack.clear()
-			end
-			player.character_build_distance_bonus = 5000
-		else
-			player.character_build_distance_bonus = 0
+	if isHolding({name="ping-tool", count=1}, player) then
+		if player.admin then
+			open_GUI(index)
 		end
+		if not global.permissions[index] then
+			player.print({"permission-denied"})
+			return player.cursor_stack.clear()
+		end
+		if player.character then player.character_build_distance_bonus = 5000 end
+	else
+		if player.character then player.character_build_distance_bonus = 0 end
 	end
 	if global.selector then
 		local master = game.players[global.selector]
@@ -95,6 +93,18 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 				p.clear_gui_arrow()
 			end
 			global.selector = nil
+		end
+	end
+	if settings.get_player_settings(player)["map-ping-clean-inventory"].value then
+		local inventory = player.get_inventory(defines.inventory.player_main)
+		local quickbar = player.get_inventory(defines.inventory.player_quickbar)
+		local count = inventory.get_item_count("ping-tool")
+		local qcount = quickbar.get_item_count("ping-tool")
+		if count > 0 then
+			inventory.remove({name = "ping-tool", count = count})
+		end
+		if qcount > 0 then
+			quickbar.remove({name = "ping-tool", count = qcount})
 		end
 	end
 end)
@@ -212,5 +222,15 @@ script.on_event(defines.events.on_built_entity, function(event)
 		player.cursor_stack.set_stack({name="ping-tool", count=1})
 		pingLocation(entity.position, player)
 		return entity.destroy()
+	end
+end)
+
+script.on_event("map-ping-hotkey", function(event)
+	local player = game.players[event.player_index]
+	local proceed = player.clean_cursor()
+	if proceed then
+		player.cursor_stack.set_stack({name="ping-tool", count=1})
+	else
+		player.print({"add-full-condition"})
 	end
 end)

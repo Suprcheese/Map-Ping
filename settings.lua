@@ -1,4 +1,15 @@
 data:extend({
+	-- Startup
+	{
+		type = "int-setting",
+		name = "map-ping-duration-ticks",
+		setting_type = "startup",
+		order = "a",
+		default_value = 480,
+		minimum_value = 30,
+		maximum_value = 5000
+	},
+	-- Runtime (global)
 	{
 		type = "int-setting",
 		name = "map-ping-lockout-ticks",
@@ -8,13 +19,12 @@ data:extend({
 		minimum_value = 5,
 		maximum_value = 5000
 	},
+	-- Runtime (per player)
 	{
-		type = "int-setting",
-		name = "map-ping-duration-ticks",
-		setting_type = "startup",
-		order = "b",
-		default_value = 480,
-		minimum_value = 30,
-		maximum_value = 5000
+		type = "bool-setting",
+		name = "map-ping-clean-inventory",
+		setting_type = "runtime-per-user",
+		order = "a",
+		default_value = false
 	}
 })

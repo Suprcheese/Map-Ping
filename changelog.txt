@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 7. 2. 2018
+  Changes:
+    - Added a hotkey to quickly access the Map Ping Tool (Shift+P by default).
+    - Added a per-player setting to keep your inventory/quickbar clean of ping tools, allowing you to rely entirely on the hotkey to ping the map rather than consuming an quickbar/inventory slot with the ping tool.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.1
-Date: 24. 1. 2018
+Date: 23. 1. 2018
   Changes:
     - Switch to new play_sound() function rather than spawning "explosion"-type entities to play sounds.
     - Behind-the-scenes performance optimizations.
