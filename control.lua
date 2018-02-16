@@ -4,6 +4,9 @@ function On_Load()
 	if global.markers then
 		script.on_event(defines.events.on_tick, process_tick)
 	end
+	if global.selector then
+		script.on_event(defines.events.on_selected_entity_changed, process_selection)
+	end
 end
 
 script.on_event(defines.events.on_player_created, function(event)
@@ -109,6 +112,7 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 				p.clear_gui_arrow()
 			end
 			global.selector = nil
+			script.on_event(defines.events.on_selected_entity_changed, nil)
 		end
 	end
 	if settings.get_player_settings(player)["map-ping-clean-inventory"].value then
@@ -125,9 +129,9 @@ script.on_event(defines.events.on_player_cursor_stack_changed, function(event)
 	end
 end)
 
-function process_tick()
+function process_tick(event)
 	if global.markers then
-		local current_tick = game.tick
+		local current_tick = event.tick
 		for i = #global.markers, 1, -1 do -- Loop over table backwards because some entries get removed within the loop
 			local marker = global.markers[i][1]
 			local sub_tick = (current_tick - global.markers[i][2]) % 60
@@ -166,7 +170,7 @@ function process_tick()
 	end
 end
 
-script.on_event(defines.events.on_selected_entity_changed, function(event)
+function process_selection(event)
 	if global.selector then
 		if event.player_index == global.selector then
 			local master = game.players[global.selector]
@@ -179,7 +183,7 @@ script.on_event(defines.events.on_selected_entity_changed, function(event)
 			end
 		end
 	end
-end)
+end
 
 function isHolding(stack, player)
 	local holding = player.cursor_stack
@@ -227,6 +231,7 @@ script.on_event(defines.events.on_built_entity, function(event)
 			if not global.selector then
 				global.selector = index
 				player.print({"entered-selection-mode"})
+				script.on_event(defines.events.on_selected_entity_changed, process_selection)
 			else
 				player.print({"error-already-selection", game.players[global.selector].name})
 			end
