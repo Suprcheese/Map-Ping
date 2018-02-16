@@ -15,7 +15,7 @@ data:extend({
 		name = "ping-tool",
 		icon = "__Map Ping__/graphics/PingTool.png",
 		icon_size = 32,
-		flags = {"not-on-map", "placeable-off-grid"},
+		flags = {"placeable-neutral", "player-creation", "not-on-map", "placeable-off-grid"},
 		max_health = 1,
 		corpse = "small-remnants",
 		inventory_size = 0,
