@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 6. 3. 2018
+  Bugfixes:
+    - Fixed shift+clicking with the ping tool would not properly enter Selection Display Mode.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.2
 Date: 8. 2. 2018
   Major Features:
