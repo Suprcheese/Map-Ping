@@ -19,6 +19,13 @@ data:extend({
 		minimum_value = 5,
 		maximum_value = 5000
 	},
+	{
+		type = "bool-setting",
+		name = "map-ping-admin-panel",
+		setting_type = "runtime-global",
+		order = "b",
+		default_value = true
+	},
 	-- Runtime (per player)
 	{
 		type = "bool-setting",

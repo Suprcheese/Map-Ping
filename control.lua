@@ -25,6 +25,9 @@ function open_GUI(player_index)
 	if frame then
 		frame.destroy()
 	end
+	if not settings.global["map-ping-admin-panel"].value then
+		return
+	end
 	frame = player.gui.left.add{type = "frame", name = "ping-admin-panel", direction = "vertical"}
 	frame.add{type = "label", caption = {"ping-admin-panel-header"}}
 	frame.add{type = "table", column_count = 2, name = "ping-admin-panel-table"}
