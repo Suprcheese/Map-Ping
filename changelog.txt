@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 0. 3. 2018
+  Minor Features:
+    - New setting to toggle the Admin Panel on/off altogether, if you'd rather not be bothered by it popping up all the time (thanks to meslem12 for the contribution).
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 6. 3. 2018
   Bugfixes:
