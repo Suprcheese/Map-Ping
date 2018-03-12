@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.4
-Date: 0. 3. 2018
+Date: 13. 3. 2018
   Minor Features:
     - New setting to toggle the Admin Panel on/off altogether, if you'd rather not be bothered by it popping up all the time (thanks to meslem12 for the contribution).
+    - German localization (also thanks to meslem12).
+  Bugfixes:
+    - Fixed blinking arrow on map no longer being visible in v0.16.29.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
 Date: 6. 3. 2018
