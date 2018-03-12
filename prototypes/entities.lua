@@ -35,7 +35,7 @@ data:extend({
 		name = "ping-arrow",
 		icon = "__Map Ping__/graphics/PingTool.png",
 		icon_size = 32,
-		flags = {"not-on-map", "placeable-off-grid"},
+		flags = {"placeable-off-grid"},
 		minable = {mining_time = 1, result = "car"},
 		max_health = 1,
 		order = "y",
